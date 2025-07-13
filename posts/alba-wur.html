@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>ALBA-WUR</title>
+
+    <meta name="author" content="Rocco Lo Conte">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="../images/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon/apple-touch-icon.png">
+    <link rel="stylesheet" type="text/css" href="../stylesheet.css">
+    
+  </head>
+
+  <body>
+    <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+      <tr style="padding:0px">
+        <td style="padding:0px">
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+              <tr>
+              <td style="padding:16px;width:100%;vertical-align:middle">
+                <h2>ALBA-WUR</h2>
+                <p>
+                The use of the WRx produces remarkable energy savings, and achieves lifetimes that are
+decades longer than those obtained by ALBA-R in sensing systems with duty cycling, while
+keeping latencies at bay.
+                </p>
+                <p>
+                ALBA-R is redesigned to work with the wake-up features of the WRx. When a node x has
+packets to transmit, it wakes up only those neighbors that satisfy the following conditions. To
+start with, only nodes with the appropriate color will be woken up. For instance, if x is blue,
+the wake-up address should be chosen so that only nodes that are either blue or red will
+wake-up. Within this set of nodes, node x will want to wake-up those nodes y that can
+receive the number of packets N<sub>B</sub> that x needs to transmit, and with their M<sub>y</sub> above a given
+threshold. To do so, x broadcasts a wake-up packet made up of the following fields:
+                </p>
+                <ul>
+                    <li>its color;</li>
+                    <li>the number of packets N<sub>B</sub>;</li>
+                    <li>the target QPI it is currently looking for.</li>
+                </ul>
+                <p>
+                Nodes that can serve as relays indicate their availability by assigning to themselves a pool of
+WRx addresses, dynamically updated based on their status, each of which expresses a
+combination of the three values:
+                </p>
+                <ul>
+                    <li>sender color;</li>
+                    <li>burst size;</li>
+                    <li>target QPI the node can satisfy.</li>
+                </ul>
+                <p>
+                For example, according to Rainbow, a node whose color is blue can only serve as a relay for
+nodes with color blue or red. Thus, the pool of its WRx addresses will contain only
+sequences with either Color = blue or Color = red (see example below). The last two fields of
+the WRx address are set based on the queue occupancy status of the node and on its
+forwarding history. In particular, for each possible burst size that the node can accept based
+on its queue status, it computes the corresponding QPI value and stores it in the last field of
+the address. When a wake-up packet is received, addresses in the pool are checked for a
+match. If the packet matches one of the addresses, the node wakes up. The addressing
+mechanism of ALBA-WUR is illustrated by the following example. Let us consider a red node
+y that currently has one packet stored in its queue, i.e., Q<sub>y</sub> = 1, and such that its moving
+weighted average of recent transmission attempts is 2, i.e., M<sub>y</sub> = 2. If the maximum number
+of packets that can be sent in a burst is N<sub>Bmax</sub> = 2, to serve as relay node y will have the
+following four wake-up addresses in its pool, each corresponding to a combination of color
+(red or blue), burst size and the target QPI it can satisfy.
+                </p>
+                <table style="width:80%;margin-left:auto;margin-right:auto;text-align:center;">
+                  <tbody><tr><td>Color = red</td><td>Burst size = 1</td><td>QPI = 1</td></tr>
+                  <tr><td>Color = red</td><td>Burst size = 2</td><td>QPI = 2</td></tr>
+                  <tr><td>Color = blue</td><td>Burst size = 1</td><td>QPI = 1</td></tr>
+                  <tr><td>Color = blue</td><td>Burst size = 2</td><td>QPI = 2</td></tr>
+                </tbody></table>
+                <p>
+                A node x whose color is blue, with N<sub>B</sub> = 1 data packets to transmit and looking for a relay
+with the best possible QPI will broadcast the following wake-up packet.
+                </p>
+                <p style="text-align:center;">
+                Color = blue &nbsp;&nbsp;&nbsp; Burst size = 1 &nbsp;&nbsp;&nbsp; Target QPI = 1
+                </p>
+                <p>
+                The neighbors of node x that receive this packet will wake up their main microcontroller and
+radio only if the wake-up packet matches one of the addresses in their pool. For instance,
+node y would wake up, as the third address in its pool matches the wake-up packet sent by
+x. After the selective awakening phase, node x waits for neighboring nodes to turn their radio
+on, and sends an RTS packet using the main radio. The nexthop relay is then chosen
+according to ALBA-R operations. If no neighbor is found that can satisfy the requests of
+node x, the awakening process is repeated with x now lowering its demands, i.e., seeking for
+nodes with different status (e.g., a lower QPI and/or burst size). It is worth noting how the
+complex relay selection policies that make ALBA-R one of the high-performance protocols
+for WSN routing are naturally expressed by the dynamic semantic addressing of
+ALBA-WUR, as simply implemented via our WRx technology. Protocol design is no longer
+driven by the need of trading off energy consumption and lifetime for latency, as efficiently
+implemented semantic addressing enables senders to quickly select only those among their
+neighbors that can best further the routing process. For instance, in noisy environments in
+which the WRx is subject to interferences that can result in false negatives, an error-tolerant
+or partial address matching mechanism can be employed.
+                </p>
+              </td>
+            </tr>
+          </tbody></table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html> 

@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>ALBA-R (Adaptive Load-Balancing Rainbow)</title>
+
+    <meta name="author" content="Rocco Lo Conte">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="../images/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon/apple-touch-icon.png">
+    <link rel="stylesheet" type="text/css" href="../stylesheet.css">
+    
+  </head>
+
+  <body>
+    <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+      <tr style="padding:0px">
+        <td style="padding:0px">
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+              <tr>
+              <td style="padding:16px;width:100%;vertical-align:middle">
+                <h2>ALBA-R (Adaptive Load-Balancing Rainbow)</h2>
+                <p>
+                ALBA-R is a cross layer geographic protocol for convergecasting in WSNs. It features the
+integration of awake/asleep schedules, MAC, routing, load balancing, and back-to-back
+packet transmissions (ALBA) with a mechanism for recognizing and routing around
+connectivity holes (Rainbow).
+                </p>
+                <h3>ALBA</h3>
+                <p>
+                The basic operations of ALBA are as follows. Nodes in the network alternate between
+awake/asleep modes according to independent wake-up schedules with fixed duty cycle.
+When a node x has packets to forward, it polls its neighbors by broadcasting a
+Request-to-Send (RTS) packet. Neighboring nodes that are currently awake respond with a
+Clear-to-Send (CTS) packet carrying information based on which x can choose the best
+relay. More specifically, for each neighbor y that has sent a CTS packet, node x computes
+the following two parameters: The queue priority index of y (QPI<sub>y</sub>), and the geographic
+priority index of y (GPI<sub>y</sub>). The parameter QPI<sub>y</sub> quantifies how fast and well node y can
+move packets forward, taking into account its recent past performance as a relay. It is
+defined as the
+min { &lceil;(Q<sub>y</sub> + N<sub>B</sub>)/M<sub>y</sub>&rceil;, N<sub>B</sub>, max }, where Q<sub>y</sub> indicates the number of packets in the queue of
+node y, N<sub>B</sub> is the number of packets that node x wants to transmit in a burst (back-to-back
+transmissions, up to N<sub>Bmax</sub> packets), and M<sub>y</sub> indicates the number of packets that node y
+was able to transmit back-to-back, without errors, in the recent past (it is a moving weighted
+average of recent transmission attempts). The QPI has been designed so that if node y is
+congested (i.e., has a high queue occupancy Q<sub>y</sub>) or it has been a “bad forwarder”
+(experiencing high packet transmission errors, i.e., it has a low M<sub>y</sub>) it is less frequently
+chosen as a relay. The parameter GPI<sub>y</sub> indicates the geographic advancement towards the
+sink that node y can provide. It is computed based on the locations of node x, node y and of
+the sink. The GPI is used to discriminate among relays that have the same forwarding
+performance, i.e., the same QPI. Nodes with higher GPI are preferred.
+                </p>
+                <h3>Rainbow</h3>
+                <p>
+                GPI-based forwarding implements the typical greedy approach to geographical routing that
+works well whenever relays towards the sink can be found, e.g., in dense networks. In
+sparser WSNs, or in networks deployed around obstacles, greedily choosing the next hop
+relay is not always possible due to the presence of a dead end, which hinders routing
+performance severely. Rainbow extends ALBA to provide a mechanism for detecting and
+routing around connectivity holes whenever they occur in WSNs. The basic idea is allowing
+the nodes to forward packets away from the sink when a relay in the direction of the sink
+cannot be found. In order to remember whether to seek for relays in the direction of the sink
+(positive advancement area F) or in the opposite direction (negative advancement area F<sup>C</sup>)
+each node is labeled by a color (from a given list) and seeks for relays among neighbors with
+its own color or with the color immediately before in the list. Hop by hop forwarding follows
+the rules established by ALBA. As an example, assume the following list of possible colors:
+                </p>
+                <ul>
+                    <li>yellow;</li>
+                    <li>red;</li>
+                    <li>blue;</li>
+                    <li>purple.</li>
+                </ul>
+                <p>
+                Initially, all nodes are colored yellow, and function according to the basic ALBA rules, i.e.,
+they look for relays located in the region F that provide positive advancement towards the
+sink. If no connectivity holes are encountered, all nodes remain yellow, keeping finding
+relays in the direction of the sink. Nodes that cannot find relays offering positive
+advancement infer that they may actually be dead ends, and change their color to red.
+According to Rainbow, red nodes will send the packet away from the sink by searching for
+yellow or red nodes in their region F<sup>C</sup>. If a red node cannot find red or yellow nodes in F<sup>C</sup>, it
+changes its color again, becoming a blue node. It will now look only for blue or red relays in
+F. Similarly, a blue node that cannot find blue or red relays in F turns purple, and starts
+looking for purple or blue nodes in F<sup>C</sup>. This process continues until all nodes have
+converged to their final color.
+                </p>
+                <h3>Conclusions</h3>
+                <p>
+                ALBA-R outperforms all previous solutions. The scheme designed to handle dead ends,
+Rainbow, is fully distributed, has low overhead, and makes it possible to route packets
+around connectivity holes without resorting to the creation and maintenance of planar
+topology graphs. Rainbow is shown to guarantee packet delivery under arbitrary localization
+errors, at the sole cost of a limited increase in route length.
+                </p>
+              </td>
+            </tr>
+          </tbody></table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html> 
