@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>X-MAC (Box-MAC)</title>
+
+    <meta name="author" content="Rocco Lo Conte">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="../images/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon/apple-touch-icon.png">
+    <link rel="stylesheet" type="text/css" href="../stylesheet.css">
+    
+  </head>
+
+  <body>
+    <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+      <tr style="padding:0px">
+        <td style="padding:0px">
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+            <tr style="padding:0px">
+              <td style="padding:2.5%;width:100%;vertical-align:middle">
+                <p class="name" style="text-align: center;">
+                  <a href="../index.html" style="text-decoration: none;">Rocco Lo Conte</a>
+                </p>
+              </td>
+            </tr>
+          </tbody></table>
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+              <tr>
+              <td style="padding:16px;width:100%;vertical-align:middle">
+                <h2>X-MAC (Box-MAC)</h2>
+                <p>
+                Synchronized protocols, such as S-MAC and T-MAC, negotiate a schedule that specifies
+when nodes are awake and asleep within a frame. Specifying the time when nodes must be
+awake in order to communicate reduces the time and energy wasted in idle listening.
+Asynchronous protocols such as B-MAC, and WiseMAC, rely on low power listening (LPL),
+also called preamble sampling, to link together a sender with data to a receiver who is duty
+cycling. Idle listening is reduced in asynchronous protocols by shifting the burden of
+synchronization to the sender. When a sender has data, the sender transmits a preamble
+that is at least as long as the sleep period of the receiver. The receiver will wake up, detect
+the preamble, and stay awake to receive the data. This allows low power communication
+without the need for explicit synchronization between the nodes. The receiver only wakes for
+a short time to sample the medium, thereby limiting idle listening. A key advantage of
+asynchronous low power listening protocols is that the sender and receiver can be
+completely decoupled in their duty cycles. The simplicity of this design removes the need for,
+and the overhead introduced by, synchronized wake/sleep schedules.
+                </p>
+                <p>
+                While the low power listening approach is simple, asynchronous, and energy-efficient, the
+long preamble in low power listening exhibits several disadvantages: it is suboptimal in terms
+of energy consumption at both the sender and receiver, it is subject to overhearing that
+causes excess energy consumption at non-target receivers, and it introduces excess latency
+at each hop. First, the receiver typically has to wait the full period until the preamble is
+finished before the data/ack exchange can begin, even if the receiver has woken up at the
+start of the preamble. This wastes energy at both the receiver and transmitter. Second, the
+low power listening approach suffers from the overhearing problem, where receivers who are
+not the target of the sender also wake up during the long preamble and have to stay awake
+until the end of the preamble to find out if the packet is destined for them. This wastes
+energy at all non-target receivers within transmission range of the sender. Third, because
+the target receiver has to wait for the full preamble before receiving the data packet, the
+per-hop latency is lower bounded by the preamble length. Over a multi-hop path, this latency
+can accumulate to become quite substantial.
+                </p>
+                <h3>Short Preamble</h3>
+                <p>
+                X-MAC employs a short preamble to further reduce energy consumption and to reduce
+latency. The first idea is to embed address information of the target in the preamble so that
+non-target receivers can quickly go back to sleep. This addresses the overhearing problem.
+                </p>
+                <h3>Strobed Preamble</h3>
+                <p>
+                The second idea is to use a strobed preamble to allow the target receiver to interrupt the
+long preamble as soon as it wakes up and determines that it is the target receiver. Inserting
+pauses into the series of short preamble packets, creating a strobed preamble, enables the
+target receiver to shorten the strobed preamble via an early acknowledgment. This short
+strobed preamble approach reduces the time and energy wasted waiting for the entire
+preamble to complete.
+                </p>
+                <h3>Conclusion</h3>
+                <p>
+                X-MAC results in significant savings in terms of both energy and per-hop latency. It can also
+use an adaptive algorithm to dynamically adjust receiver duty cycles to optimize for energy
+consumption per packet, latency, or both. Thus, the only limit in this protocol is that it still
+needs to send preambles before the node wakes up.
+                </p>
+              </td>
+            </tr>
+          </tbody></table>
+
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+            <tr>
+              <td style="padding:0px">
+                <br>
+                <p style="text-align:center;font-size:small;">
+                  Thanks to <a href="https://github.com/jonbarron/jonbarron_website">Jon Barron</a> for the website template.
+                </p>
+              </td>
+            </tr>
+          </tbody></table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html> 
