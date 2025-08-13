@@ -2,62 +2,49 @@
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
     <title>Rocco Lo Conte</title>
-
     <meta name="author" content="Rocco Lo Conte">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="icon" href="images/favicon/favicon.ico"> -->
     <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
-    
   </head>
 
   <body>
-    <div class="content-wrapper">
-    <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-      <tr style="padding:0px">
-        <td style="padding:0px">
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr style="padding:0px">
-              <td style="padding:2.5%;width:63%;vertical-align:middle">
-                <p class="name" style="text-align: center;">
-                  Rocco Lo Conte
-                </p>
-                <p>
-		I'm a Software Engineer at <a href="https://reply.com/">Reply</a>. I did my Master's at Sapienza University of Rome, where I worked on online algorithms augmented through machine learning under Prof. <a href="https://www.chierichetti.name/">Flavio Chierichetti</a>.
-                </p>
-                <p style="text-align:center">
-                  <a href="mailto:lc24rocco@gmail.com">Email</a> &nbsp;/&nbsp;
-                  <a href="data/CV.pdf">CV</a> &nbsp;/&nbsp;
-                  <a href="https://twitter.com/roccoloconte">Twitter</a> &nbsp;/&nbsp;
-                  <a href="https://github.com/roccoloconte/">Github</a>
-                </p>
-              </td>
-              <td style="padding:2.5%;width:37%;max-width:37%">
-                <a href="images/profile.png"><img style="width:70%;max-width:200px;object-fit: cover; border-radius: 50%;" alt="profile photo" src="images/profile.png" class="hoverZoomLink"></a>
-              </td>
-            </tr>
-          </tbody></table>
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-              <tr>
-              <td style="padding:16px;width:100%;vertical-align:middle">
-                <h2>Posts</h2>
-                <p>
-                  <ul />
-                </p>
-              </td>
-            </tr>
-          </tbody></table>
-        </td>
-      </tr>
-    </table>
-    </div>
+    <main class="container homepage-container">
+      <section class="profile-section">
+        <div class="profile-content">
+          <h1>Rocco Lo Conte</h1>
+          <p>
+            I'm a Software Engineer at <a href="https://reply.com/">Reply</a>. I did my Master's at Sapienza University of Rome, where I worked on online algorithms augmented through machine learning under Prof. <a href="https://www.chierichetti.name/">Flavio Chierichetti</a>.
+          </p>
+          <div class="contact-links">
+            <a href="mailto:lc24rocco@gmail.com">Email</a> &nbsp;/&nbsp;
+            <a href="data/CV.pdf">CV</a> &nbsp;/&nbsp;
+            <a href="https://twitter.com/roccoloconte">Twitter</a> &nbsp;/&nbsp;
+            <a href="https://github.com/roccoloconte/">Github</a>
+          </div>
+        </div>
+        <div class="profile-image-container">
+          <a href="images/profile.png">
+            <img class="profile-image" alt="Rocco Lo Conte" src="images/profile.png">
+          </a>
+        </div>
+      </section>
+
+      <section class="posts-section">
+        <h2>Posts</h2>
+        <ul>
+          <li><a href="posts/localization-networks.html">Localization in Modern Networks</a></li>
+          <li><a href="posts/lorawan-nbiot.html">LoRaWAN vs NB-IoT: A Technical Deep Dive</a></li>
+        </ul>
+      </section>
+    </main>
+
     <footer>
-      <p style="font-size:small;">
+      <p>
         Thanks to <a href="https://github.com/jonbarron/jonbarron_website">Jon Barron</a> for the website template.
       </p>
     </footer>
