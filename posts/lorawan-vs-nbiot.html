@@ -12,215 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon/apple-touch-icon.png">
-    <style>
-      @font-face {
-        font-family: 'Lato';
-        font-style: italic;
-        font-weight: 400;
-        src: local('Lato Italic'), local('Lato-Italic'), url(https://fonts.gstatic.com/s/lato/v15/S6u8w4BMUTPHjxsAUi-qNiXg7eU0.woff2) format('woff2');
-        unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-      }
-
-      @font-face {
-        font-family: 'Lato';
-        font-style: italic;
-        font-weight: 400;
-        src: local('Lato Italic'), local('Lato-Italic'), url(https://fonts.gstatic.com/s/lato/v15/S6u8w4BMUTPHjxsAXC-qNiXg7Q.woff2) format('woff2');
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-      }
-
-      @font-face {
-        font-family: 'Lato';
-        font-style: italic;
-        font-weight: 700;
-        src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(https://fonts.gstatic.com/s/lato/v15/S6u_w4BMUTPHjxsI5wq_FQftx9897sxZ.woff2) format('woff2');
-        unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-      }
-
-      @font-face {
-        font-family: 'Lato';
-        font-style: italic;
-        font-weight: 700;
-        src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(https://fonts.gstatic.com/s/lato/v15/S6u_w4BMUTPHjxsI5wq_Gwftx9897g.woff2) format('woff2');
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-      }
-
-      @font-face {
-        font-family: 'Lato';
-        font-style: normal;
-        font-weight: 400;
-        src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v15/S6uyw4BMUTPHjxAwXiWtFCfQ7A.woff2) format('woff2');
-        unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-      }
-
-      @font-face {
-        font-family: 'Lato';
-        font-style: normal;
-        font-weight: 400;
-        src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v15/S6uyw4BMUTPHjx4wXiWtFCc.woff2) format('woff2');
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-      }
-
-      @font-face {
-        font-family: 'Lato';
-        font-style: normal;
-        font-weight: 700;
-        src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v15/S6u9w4BMUTPHh6UVSwaPGQ3q5d0N7w.woff2) format('woff2');
-        unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-      }
-
-      @font-face {
-        font-family: 'Lato';
-        font-style: normal;
-        font-weight: 700;
-        src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v15/S6u9w4BMUTPHh6UVSwiPGQ3q5d0.woff2) format('woff2');
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      html {
-        height: 100%;
-      }
-
-      body {
-        font-family: 'Lato', Verdana, Helvetica, sans-serif;
-        font-size: 16px;
-        line-height: 1.6;
-        color: #333;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        margin: 0;
-        background-color: #fff;
-      }
-
-      a {
-        color: #1772d0;
-        text-decoration: none;
-        transition: color 0.2s ease;
-      }
-
-      a:hover,
-      a:focus {
-        color: #f09228;
-      }
-
-      .container {
-        max-width: 800px;
-        width: 100%;
-        margin: 0 auto;
-        padding: 20px;
-        flex: 1;
-      }
-
-      .post-header {
-        margin-bottom: 40px;
-      }
-
-      .back-link {
-        display: inline-block;
-        margin-bottom: 20px;
-        color: #666;
-        font-size: 14px;
-      }
-
-      .post-title {
-        font-size: 28px;
-        font-weight: 400;
-        margin-bottom: 8px;
-        line-height: 1.3;
-      }
-
-      .post-date {
-        color: #666;
-        font-size: 14px;
-        margin-bottom: 0;
-      }
-
-      .post-content {
-        font-size: 16px;
-        line-height: 1.6;
-      }
-
-      .post-content h2 {
-        font-size: 20px;
-        font-weight: 400;
-        margin: 30px 0 15px 0;
-      }
-
-      .post-content h3 {
-        font-size: 18px;
-        font-weight: 600;
-        margin: 25px 0 10px 0;
-      }
-
-      .post-content p {
-        margin-bottom: 16px;
-      }
-
-      .post-content ul {
-        margin: 16px 0;
-        padding-left: 20px;
-      }
-
-      .post-content li {
-        margin-bottom: 6px;
-      }
-
-      .post-content strong {
-        font-weight: 600;
-      }
-
-      .comparison-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 25px 0;
-        font-size: 16px;
-      }
-
-      .comparison-table th,
-      .comparison-table td {
-        border: 1px solid #ddd;
-        padding: 12px;
-        text-align: left;
-        vertical-align: top;
-      }
-
-      .comparison-table th {
-        background-color: #f8f9fa;
-        font-weight: 600;
-      }
-
-      .comparison-table tbody tr:nth-child(even) {
-        background-color: #f9f9f9;
-      }
-
-      @media (max-width: 768px) {
-        .post-title {
-          font-size: 24px;
-        }
-        
-        .container {
-          padding: 15px;
-        }
-        
-        .comparison-table {
-          font-size: 14px;
-        }
-        
-        .comparison-table th,
-        .comparison-table td {
-          padding: 8px;
-        }
-      }
-    </style>
   </head>
-
   <body>
     <main class="container">
       <header class="post-header">
@@ -265,7 +57,12 @@
         <h3>The Collision Problem</h3>
         <p>LoRa networks face a critical problem called inter-SF collision due to the near-far effect. When a device close to the gateway transmits using SF7 (fast, short-range), it can drown out a distant device trying to communicate with SF12 (slow, long-range). This happens because transmission power matters more than spreading factor for interference - a strong nearby signal will overpower a weak distant signal regardless of their different SFs.</p>
         
-        <p>This creates serious deployment challenges: we can't assume unlimited network capacity just because LoRa offers multiple spreading factors, gateway placement becomes absolutely critical in dense areas, and sophisticated algorithms are needed to intelligently manage which devices use which spreading factors.</p>
+        <p>This creates serious deployment challenges:</p>
+        <ul>
+          <li>We can't assume unlimited network capacity just because LoRa offers multiple spreading factors</li>
+          <li>Gateway placement becomes absolutely critical in dense areas</li>
+          <li>Sophisticated algorithms are needed to intelligently manage which devices use which spreading factors</li>
+        </ul>
         
         <h3>Adaptive Data Rate</h3>
         <p>The network server monitors each device's signal quality and adjusts spreading factor (lower SF for good signal quality resulting in faster transmission) and transmit power (reduce power when signal is strong enough). The goal is to minimize airtime and power consumption.</p>
@@ -275,7 +72,7 @@
         <h3>Security</h3>
         <p>LoRaWAN uses two separate encryption layers: network layer protects network management and device authentication, while application layer protects actual sensor data from network operators. Each device has unique keys that are derived during the join process, not stored permanently. Network and application providers cannot see each other's data.</p>
         
-        <p>LoRaWAN's current security relies on AES-128 encryption. The LoRaWAN 1.1 specification significantly enhanced security over version 1.0.x by adding features like a separate Join Server, which further isolates keys and improves the overall security posture. However, the join process can still be exploited through replay attacks if developers don't implement the security protocols correctly.</p>
+        <p>LoRaWAN's current security relies on AES-128 encryption within a device-based key management system where keys are provisioned directly to devices. The LoRaWAN 1.1 specification significantly enhanced security over version 1.0.x by adding features like a separate Join Server, which further isolates keys and improves the overall security posture. However, the join process can still be exploited through replay attacks if developers don't implement the security protocols correctly.</p>
         
         <h3>Capacity and Scalability</h3>
         <p>In Europe, unlicensed band regulations limit devices to 1% duty cycle - meaning 36 seconds of transmission per hour maximum. Network capacity is fundamentally limited by total available airtime, not the number of devices.</p>
@@ -287,6 +84,9 @@
 
         <h3>Firmware Updates Over-the-Air (FUOTA)</h3>
         <p>While possible on LoRaWAN, firmware updates are extremely slow and challenging due to the low data rates and duty cycle limitations. Large firmware updates can take weeks or months to complete across a fleet, making this impractical for time-sensitive security patches.</p>
+
+        <h3>Global Deployment Flexibility</h3>
+        <p>LoRaWAN can be deployed by anyone, anywhere in the world (respecting regional ISM bands), making it ideal for remote locations or regions without cellular coverage. This deployment independence is a significant advantage in areas where cellular operators haven't established NB-IoT networks or where private network control is essential.</p>
         
         <h2>NB-IoT</h2>
         
@@ -295,7 +95,7 @@
         
         <p>Unlike LoRaWAN's unlicensed bands, NB-IoT operates in spectrum that mobile operators pay licensing fees for. This means no interference from garage door openers, WiFi, or other unlicensed devices; guaranteed quality of service backed by operator SLAs; and professional network management with 24/7 monitoring and maintenance.</p>
         
-        <p>This comes with significant constraints including higher costs where operators charge licensing fees plus per-device connectivity, operator dependency where you don't own or control the network, and slower deployment requiring operator approval, SIM provisioning, and contracts.</p>
+        <p>This comes with significant constraints including higher ongoing costs where operators charge licensing fees plus per-device connectivity (typically $0.50-$2.00 per device per month depending on data usage and volume), operator dependency where you don't own or control the network, and slower deployment requiring operator approval, SIM provisioning, and contracts.</p>
         
         <h3>Power Saving Features</h3>
         <p>NB-IoT achieves long battery life through two key mechanisms:</p>
@@ -309,10 +109,16 @@
         <p>NB-IoT excels in difficult environments because it can maintain communication even when the signal is extremely weak. NB-IoT signals can penetrate deep into buildings, reach underground areas, and work in locations where other wireless technologies completely fail. Each NB-IoT cell tower can handle tens of thousands of connected devices thanks to optimized cellular protocols.</p>
 
         <h3>Mobility Support</h3>
-        <p>NB-IoT provides seamless mobility support across cellular networks, making it ideal for tracking moving assets across wide geographic areas. Handover between cell towers is handled automatically by the cellular infrastructure.</p>
+        <p>NB-IoT provides seamless mobility support across cellular networks, making it ideal for tracking moving assets across wide geographic areas. Handover between cell towers is handled automatically by the cellular infrastructure. Where available, international roaming agreements enable device operation across multiple countries.</p>
 
         <h3>Firmware Updates Over-the-Air (FUOTA)</h3>
         <p>NB-IoT's higher bandwidth compared to LoRaWAN makes firmware updates much more practical. While still not as fast as traditional cellular connections, updates can be completed in reasonable timeframes for most applications.</p>
+
+        <h3>Security</h3>
+        <p>NB-IoT utilizes standardized 3GPP security protocols with SIM-based key management, providing cellular-grade encryption that includes AES-based algorithms. The key difference from LoRaWAN isn't the encryption algorithm itself, but the security architecture - NB-IoT uses established SIM card security with operator-managed authentication systems, while LoRaWAN uses device-based key provisioning.</p>
+
+        <h3>Network Availability Limitations</h3>
+        <p>NB-IoT deployment depends on cellular operator rollout, which is not yet globally ubiquitous. While coverage is expanding rapidly in urban areas and developed markets, rural or developing regions may lack NB-IoT availability. However, where available, NB-IoT benefits from existing cellular roaming agreements for international deployments.</p>
         
         <h2>Technology Comparison</h2>
 
@@ -327,7 +133,7 @@
           <tbody>
             <tr>
               <td><strong>Spectrum</strong></td>
-              <td>Unlicensed</td>
+              <td>Unlicensed (Sub-GHz)</td>
               <td>Licensed (Cellular bands)</td>
             </tr>
             <tr>
@@ -357,8 +163,8 @@
             </tr>
             <tr>
               <td><strong>Data Rate</strong></td>
-              <td>Very low</td>
-              <td>Low</td>
+              <td>Very low (0.3-50 kbps)</td>
+              <td>Low (up to 250 kbps)</td>
             </tr>
             <tr>
               <td><strong>Latency</strong></td>
@@ -367,8 +173,8 @@
             </tr>
             <tr>
               <td><strong>Cost Model</strong></td>
-              <td>High upfront, low ongoing</td>
-              <td>Low upfront, recurring monthly</td>
+              <td>High upfront ($500-$5000 per gateway), low ongoing</td>
+              <td>Low upfront, recurring monthly ($0.50-$2/device/month)</td>
             </tr>
             <tr>
               <td><strong>Deployment Speed</strong></td>
@@ -377,8 +183,13 @@
             </tr>
             <tr>
               <td><strong>Security</strong></td>
-              <td>AES-128, dual-layer</td>
-              <td>Cellular-grade encryption</td>
+              <td>AES-128, device-based key management</td>
+              <td>Cellular-grade, SIM-based security</td>
+            </tr>
+            <tr>
+              <td><strong>Global Deployment</strong></td>
+              <td>Deploy anywhere (ISM bands)</td>
+              <td>Depends on operator coverage</td>
             </tr>
           </tbody>
         </table>
@@ -393,6 +204,7 @@
           <li>Rural locations without reliable cellular coverage</li>
           <li>Stationary or slowly moving devices</li>
           <li>Cost-sensitive applications with many devices</li>
+          <li>International deployments in areas without NB-IoT coverage</li>
         </ul>
 
         <p><strong>Choose NB-IoT for:</strong></p>
@@ -403,6 +215,7 @@
           <li>Applications requiring mobility across wide areas</li>
           <li>Smaller device deployments</li>
           <li>Projects needing faster deployment without infrastructure investment</li>
+          <li>Applications where operator-managed security and SLAs are essential</li>
         </ul>
       </article>
     </main>

@@ -6,7 +6,7 @@
     <meta name="author" content="Rocco Lo Conte">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Deep dive into voice processing technologies in 5G networks and AI systems, from analog capture to digital reproduction">
-    <meta name="keywords" content="5G, voice, AI, audio processing, PCM, codecs, VoNR, neural networks">
+    <meta name="keywords" content="5G, voice, AI, audio processing, PCM, codecs, VoNR, neural networks, SRTP, edge computing">
     <meta name="date" content="2025-08-14">
     <link rel="icon" type="image/x-icon" href="../images/favicon/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon-32x32.png">
@@ -46,7 +46,10 @@
 
         <p>Opus (not the Anthropic model), another key codec in 5G networks, excels at real-time applications like gaming or video calls. It can adapt its compression rate 50 times per second, responding almost instantly to changes in the voice or network conditions. This responsiveness explains why modern gaming voice chat feels so natural compared to older systems.</p>
 
-        <p>The encoded audio gets packaged into small data packets, each containing a few milliseconds of compressed speech plus routing information. 5G's significantly higher power efficiency and processing capabilities allow for more sophisticated compression algorithms that would have drained older network infrastructure.</p>
+        <p>The encoded audio gets packaged into small data packets, each containing a few milliseconds of compressed speech plus routing information. The advanced processing capabilities of 5G devices and network hardware enable sophisticated compression algorithms that would have been too computationally intensive for older systems to handle efficiently.</p>
+
+        <h3><strong>How Voice Gets Secured</strong></h3>
+        <p>Before transmission, voice packets undergo encryption to protect against interception and eavesdropping. 5G networks implement multiple layers of security, including user plane encryption that scrambles voice data using algorithms like 256-bit AES. The Secure Real-time Transport Protocol (SRTP) adds another layer of protection specifically for voice communications, ensuring both confidentiality and integrity of the audio stream. This encryption happens transparently - users experience no delay or quality degradation, but their conversations remain protected from unauthorized access throughout the network journey.</p>
 
         <h3><strong>How Voice Travels</strong></h3>
         <p>Voice packets travel through 5G networks using Voice over New Radio (VoNR), a packet-based system that abandons the circuit-switched approach of older cellular networks. This represents the final evolution from circuit-switched networks in 2G and 3G systems, through Voice over LTE (VoLTE) in 4G networks, to the fully packet-switched VoNR approach in 5G. Instead of reserving a dedicated channel for your entire call, VoNR treats voice as high-priority data packets flowing through the same infrastructure handling internet traffic.</p>
@@ -54,6 +57,9 @@
         <p>Quality of Service (QoS) mechanisms ensure voice packets get priority treatment. When network congestion occurs, your voice data jumps ahead of web browsing or file downloads. 5G networks can create dedicated network slices - virtual networks optimized specifically for voice applications with guaranteed latency and bandwidth parameters.</p>
 
         <p>The packets don't necessarily follow the same path to their destination. Network intelligence routes each packet through the least congested route available, potentially sending consecutive voice packets through different cell towers. This dynamic routing helps maintain call quality even when parts of the network experience problems.</p>
+
+        <h3><strong>Edge Computing in 5G Voice</strong></h3>
+        <p>5G's Multi-access Edge Computing (MEC) creates a critical middle ground between device and cloud processing. Voice processing can now happen at the network edge - closer to users than traditional cloud servers but with more computational power than individual devices. This enables AI-driven features like real-time translation, advanced noise suppression, or voice enhancement with latencies under 10 milliseconds, dramatically improving the user experience for voice applications without requiring powerful on-device hardware.</p>
 
         <h3><strong>How Voice Gets Decoded</strong></h3>
         <p>The receiving device collects these voice packets and reconstructs the original speech. This process requires sophisticated timing management since packets can arrive out of order or with varying delays. Jitter buffers temporarily store incoming packets, reordering them and smoothing out timing irregularities before playback.</p>
@@ -66,12 +72,14 @@
         <p>High-quality DACs can reproduce frequencies from 20 Hz to 20 kHz - the full range of human hearing - compared to traditional telephony's 300-3400 Hz limitation. The analog output drives electromagnetic transducers in speakers or headphones, converting electrical signals back into the pressure waves we perceive as sound.</p>
 
         <h2>IoT Networks</h2>
-        <p>IoT devices handle voice using fundamentally the same capture, encode, transmit, decode, and reproduce process as 5G networks, but with critical differences driven by power and computational constraints. IoT devices typically sample audio at lower frequencies with reduced bit resolution to conserve battery life. They use ultra-lightweight codecs like G.711 or proprietary compression schemes that sacrifice audio quality for minimal processing requirements. Most IoT voice processing happens in the cloud rather than at the network edge, creating higher latency but allowing access to sophisticated AI models that would be impossible to run locally on battery-powered devices.</p>
+        <p>IoT devices handle voice using fundamentally the same capture, encode, transmit, decode, and reproduce process as 5G networks, but with critical differences driven by power and computational constraints. IoT devices typically sample audio at lower frequencies with reduced bit resolution to conserve battery life.</p>
+
+        <p>They use codecs that are computationally lightweight to save power, such as G.711 (which is simple to process but uses 64 kbps bandwidth), or specialized low-bandwidth codecs when network constraints are the primary concern. Most IoT voice processing happens in the cloud rather than at the network edge, creating higher latency but allowing access to sophisticated AI models that would be impossible to run locally on battery-powered devices.</p>
 
         <h2>AI Voice Systems</h2>
         <p>AI voice systems use the same fundamental PCM capture and DAC reproduction processes as 5G networks - sampling analog audio into digital format and converting back to analog for playback.</p>
 
-        <p>Modern voice models have evolved beyond the traditional speech-to-text-to-speech pipeline. State-of-the-art conversational AI systems process audio input directly and generate audio output without text conversion, preserving prosodic information, speaker characteristics, and emotional nuance that text intermediates lose. This preservation allows AI voices to laugh, sigh, or use sarcastic tones in ways that sound natural, as they generate audio with genuine emotional context rather than simply reading text aloud.</p>
+        <p>Modern voice models have evolved beyond the traditional speech-to-text-to-speech pipeline. State-of-the-art conversational AI systems process audio input directly and generate audio output without text conversion, preserving prosodic information, speaker characteristics, and emotional nuance that text intermediates lose. This preservation allows AI systems to replicate human prosody—like laughter, sighs, or tones of sarcasm—creating audio that carries rich emotional cues lost in text-based synthesis.</p>
 
         <p>Once captured through PCM sampling, modern AI systems convert digital audio to mel-spectrograms - visual representations showing how different frequencies change over time, essentially turning sound into a 2D image where the x-axis represents time and y-axis represents frequency. These mel-spectrograms provide a more effective input format for neural networks compared to processing raw audio waveforms directly.</p>
 
