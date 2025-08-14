@@ -1,0 +1,211 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Localization in Modern Networks - Rocco Lo Conte</title>
+    <meta name="author" content="Rocco Lo Conte">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Exploring network-based localization technologies including GPS, 5G, Wi-Fi, Bluetooth, LoRaWAN, and NB-IoT for modern IoT applications">
+    <meta name="keywords" content="localization, IoT, GPS, 5G, Wi-Fi, Bluetooth, LoRaWAN, NB-IoT, positioning, networks">
+    <meta name="date" content="2025-08-14">
+    <link rel="icon" type="image/x-icon" href="../images/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon/apple-touch-icon.png">
+    <link rel="stylesheet" type="text/css" href="../stylesheet.css">
+  </head>
+
+  <body>
+    <main class="container">
+      <header class="post-header">
+        <a href="../index.html" class="back-link">← Back to Home</a>
+        <h1 class="post-title">Localization in Modern Networks</h1>
+        <p class="post-date">August 14, 2025</p>
+      </header>
+
+      <article class="post-content">
+        <p>Network-based localization has become essential as we move beyond GPS-dependent systems. From tracking assets in warehouses to monitoring livestock in remote farms, modern applications need positioning that works indoors, consumes minimal power, and costs little per device. This shift has driven innovations across modern networks like cellular, Wi-Fi, Bluetooth, and IoT networks.</p>
+
+        <h2>GPS Localization</h2>
+        <p>GPS relies on a constellation of satellites orbiting Earth. The system works through a process called multilateration, where the device measures the time it takes for signals to travel from at least four satellites. Since radio waves travel at the speed of light, these time measurements can be converted directly into distances.</p>
+
+        <p>Each distance measurement creates an imaginary sphere around that satellite, and the device's position is located where these spheres intersect. The fourth satellite serves a critical purpose beyond positioning - it corrects for clock errors in your device. While satellites carry atomic clocks accurate to nanoseconds, your phone or GPS receiver uses much less precise timing.</p>
+
+        <p>The satellites continuously broadcast their precise orbital positions along with timestamps. The device performs the calculation and once distances to multiple satellites are known, basic geometry determines your location through the intersection of these spherical measurements.</p>
+
+        <h2>Why Network-Based Localization Matters</h2>
+        
+        <h3><strong>The GPS Problem</strong></h3>
+        <p>GPS works well for smartphones and cars, but fails in modern IoT scenarios:</p>
+        <ul>
+          <li><strong>Power consumption:</strong> GPS chips drain batteries in weeks, not years</li>
+          <li><strong>Indoor performance:</strong> Signals can't penetrate buildings effectively</li>
+          <li><strong>Cost:</strong> Adding GPS increases device cost</li>
+        </ul>
+
+        <h3><strong>The New Requirements</strong></h3>
+        <p>Modern IoT applications need:</p>
+        <ul>
+          <li>Indoor/outdoor operation without signal gaps</li>
+          <li>Battery life measured in years, not months</li>
+          <li>Low-cost devices for mass deployment</li>
+          <li>Reasonable accuracy for application needs (not centimeter precision)</li>
+        </ul>
+
+        <h2>5G Localization</h2>
+        <p>Multiple measurement types working together:</p>
+        <ul>
+          <li><strong>Time-based:</strong> Measuring how long signals take to travel between device and multiple base stations</li>
+          <li><strong>Angle-based:</strong> Using massive antenna arrays to determine signal direction</li>
+          <li><strong>Hybrid approaches:</strong> Combining multiple techniques for better accuracy</li>
+        </ul>
+
+        <p>5G networks deploy many more base stations than previous generations. More base stations mean better geometry for triangulation - similar to how GPS needs multiple satellites for accurate positioning.</p>
+        
+        <p>This type of localization requires dense network deployment and high-end devices. This makes it suitable for smartphones and vehicles, but not for low-cost IoT sensors.</p>
+
+        <h2>Wi-Fi Positioning</h2>
+        <p>Wi-Fi positioning has become crucial for indoor localization, especially in smartphones and enterprise applications.</p>
+
+        <h3><strong>How It Works</strong></h3>
+        <p>Wi-Fi positioning uses signal strength measurements from multiple known access points:</p>
+        <ul>
+          <li>Device scans for nearby Wi-Fi networks</li>
+          <li>Measures received signal strength (RSSI) from each access point</li>
+          <li>Uses trilateration based on signal strength to distance relationships</li>
+          <li>Can also use fingerprinting techniques that map signal patterns to locations</li>
+        </ul>
+
+        <h3><strong>Deployment Scenarios</strong></h3>
+        <p>Wi-Fi positioning works best in environments with dense access point coverage:</p>
+        <ul>
+          <li>Shopping malls and airports for navigation</li>
+          <li>Warehouses for asset tracking</li>
+          <li>Office buildings for device management</li>
+          <li>Hospitals for equipment and patient monitoring</li>
+        </ul>
+
+        <p>The main advantage is leveraging existing Wi-Fi infrastructure without additional hardware. However, accuracy depends heavily on access point density and environmental factors affecting signal propagation.</p>
+
+        <h2>Bluetooth/BLE Positioning</h2>
+        <p>Bluetooth Low Energy (BLE) positioning excels at micro-location scenarios where precise indoor positioning is needed.</p>
+
+        <h3><strong>Beacon-Based Systems</strong></h3>
+        <p>Most BLE positioning uses strategically placed beacons:</p>
+        <ul>
+          <li>Small battery-powered devices transmit signals at regular intervals</li>
+          <li>Mobile devices measure signal strength from multiple beacons</li>
+          <li>Position calculated using trilateration or proximity detection</li>
+          <li>Battery life of beacons can exceed several years</li>
+        </ul>
+
+        <h3><strong>Use Cases</strong></h3>
+        <p>BLE positioning targets specific applications:</p>
+        <ul>
+          <li>Retail analytics and customer behavior tracking</li>
+          <li>Asset tracking within rooms or specific areas</li>
+          <li>Museum and exhibition guidance systems</li>
+          <li>Industrial equipment monitoring in confined spaces</li>
+        </ul>
+
+        <p>The technology provides room-level or sub-room accuracy, making it ideal for applications where you need to know not just which building, but which specific area within that building.</p>
+
+        <h2>LPWAN Localization</h2>
+
+        <h3><strong>LoRaWAN Localization</strong></h3>
+        <p><strong>Time Difference of Arrival (TDoA):</strong> This is how most LoRaWAN localization works:</p>
+        <ul>
+          <li>Device transmits a single packet</li>
+          <li>Multiple gateways receive the packet at slightly different times</li>
+          <li>Time differences reveal the device's position relative to gateways</li>
+        </ul>
+
+        <p>The main hurdle is synchronization between gateways - all gateways need extremely accurate clocks. Even tiny timing errors translate to large position errors since radio waves travel 300 meters per microsecond.</p>
+
+        <p>LoRaWAN TDoA real-world performance varies widely based on:</p>
+        <ul>
+          <li>Number and placement of gateways</li>
+          <li>Environmental obstacles</li>
+          <li>Clock synchronization quality</li>
+        </ul>
+
+        <p><strong>RSSI-Based Positioning:</strong> When TDoA isn't available, systems fall back to signal strength measurements:</p>
+        <ul>
+          <li>Stronger signals generally mean shorter distances</li>
+          <li>Machine learning approaches are increasingly being explored to improve accuracy by learning environmental signal patterns</li>
+          <li>Less accurate but works with fewer gateways</li>
+        </ul>
+
+        <h3><strong>NB-IoT Localization</strong></h3>
+        <p>NB-IoT has a fundamental limitation for localization: devices typically communicate with only a single cell tower at a time. Therefore, positioning must be derived from signals of that one tower, unlike LoRaWAN which can use multiple gateways simultaneously.</p>
+
+        <p>How NB-IoT positioning works:</p>
+        <ul>
+          <li>Device connects to the nearest cell tower</li>
+          <li>System estimates distance based on signal strength and timing</li>
+          <li>Cell tower's directional antenna provides rough direction</li>
+          <li>Position estimated as somewhere within that sector</li>
+        </ul>
+
+        <p>However, radio signals behave unpredictably in real environments:</p>
+        <ul>
+          <li>Buildings cause reflections and shadows</li>
+          <li>Weather affects signal propagation</li>
+          <li>Interference from other devices creates noise</li>
+        </ul>
+
+        <p>Machine learning approaches are being explored to improve positioning accuracy by learning patterns in signal behavior for specific environments, though traditional geometric methods remain the primary approach.</p>
+
+        <h2>Comparisons</h2>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Technology</th>
+              <th>Best Use Cases</th>
+              <th>Key Advantages</th>
+              <th>Main Limitations</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>GPS</strong></td>
+              <td>Outdoor tracking, navigation</td>
+              <td>High accuracy, global coverage</td>
+              <td>Indoor limitations, power consumption</td>
+            </tr>
+            <tr>
+              <td><strong>5G</strong></td>
+              <td>High-value assets, urban tracking, real-time applications</td>
+              <td>High accuracy, low latency</td>
+              <td>High energy consumption, requires dense infrastructure</td>
+            </tr>
+            <tr>
+              <td><strong>Wi-Fi</strong></td>
+              <td>Indoor navigation, enterprise tracking</td>
+              <td>Uses existing infrastructure</td>
+              <td>Moderate accuracy, limited range</td>
+            </tr>
+            <tr>
+              <td><strong>Bluetooth/BLE</strong></td>
+              <td>Micro-location, asset tracking, retail analytics</td>
+              <td>Very low power, room-level accuracy</td>
+              <td>Short range, requires beacon infrastructure</td>
+            </tr>
+            <tr>
+              <td><strong>LoRaWAN</strong></td>
+              <td>Rural/industrial sites, battery-powered sensors, private networks</td>
+              <td>Multi-year battery life, long range</td>
+              <td>Moderate accuracy, synchronization challenges</td>
+            </tr>
+            <tr>
+              <td><strong>NB-IoT</strong></td>
+              <td>Urban deployments, indoor applications, enterprise IoT</td>
+              <td>Cellular reliability, wide coverage</td>
+              <td>Lower accuracy, single cell limitation</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+    </main>
+  </body>
+</html>

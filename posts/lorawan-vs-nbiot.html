@@ -1,0 +1,410 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>LoRaWAN vs NB-IoT - Rocco Lo Conte</title>
+    <meta name="author" content="Rocco Lo Conte">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Deep technical comparison of LoRaWAN and NB-IoT technologies, covering real-world performance, limitations, and deployment considerations">
+    <meta name="keywords" content="LoRaWAN, NB-IoT, IoT, LPWAN, wireless, connectivity, comparison">
+    <meta name="date" content="2025-08-14">
+    <link rel="icon" type="image/x-icon" href="../images/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon/apple-touch-icon.png">
+    <style>
+      @font-face {
+        font-family: 'Lato';
+        font-style: italic;
+        font-weight: 400;
+        src: local('Lato Italic'), local('Lato-Italic'), url(https://fonts.gstatic.com/s/lato/v15/S6u8w4BMUTPHjxsAUi-qNiXg7eU0.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+      }
+
+      @font-face {
+        font-family: 'Lato';
+        font-style: italic;
+        font-weight: 400;
+        src: local('Lato Italic'), local('Lato-Italic'), url(https://fonts.gstatic.com/s/lato/v15/S6u8w4BMUTPHjxsAXC-qNiXg7Q.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+
+      @font-face {
+        font-family: 'Lato';
+        font-style: italic;
+        font-weight: 700;
+        src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(https://fonts.gstatic.com/s/lato/v15/S6u_w4BMUTPHjxsI5wq_FQftx9897sxZ.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+      }
+
+      @font-face {
+        font-family: 'Lato';
+        font-style: italic;
+        font-weight: 700;
+        src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(https://fonts.gstatic.com/s/lato/v15/S6u_w4BMUTPHjxsI5wq_Gwftx9897g.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+
+      @font-face {
+        font-family: 'Lato';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v15/S6uyw4BMUTPHjxAwXiWtFCfQ7A.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+      }
+
+      @font-face {
+        font-family: 'Lato';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v15/S6uyw4BMUTPHjx4wXiWtFCc.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+
+      @font-face {
+        font-family: 'Lato';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v15/S6u9w4BMUTPHh6UVSwaPGQ3q5d0N7w.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+      }
+
+      @font-face {
+        font-family: 'Lato';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v15/S6u9w4BMUTPHh6UVSwiPGQ3q5d0.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        height: 100%;
+      }
+
+      body {
+        font-family: 'Lato', Verdana, Helvetica, sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+        color: #333;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        background-color: #fff;
+      }
+
+      a {
+        color: #1772d0;
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      a:hover,
+      a:focus {
+        color: #f09228;
+      }
+
+      .container {
+        max-width: 800px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 20px;
+        flex: 1;
+      }
+
+      .post-header {
+        margin-bottom: 40px;
+      }
+
+      .back-link {
+        display: inline-block;
+        margin-bottom: 20px;
+        color: #666;
+        font-size: 14px;
+      }
+
+      .post-title {
+        font-size: 28px;
+        font-weight: 400;
+        margin-bottom: 8px;
+        line-height: 1.3;
+      }
+
+      .post-date {
+        color: #666;
+        font-size: 14px;
+        margin-bottom: 0;
+      }
+
+      .post-content {
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      .post-content h2 {
+        font-size: 20px;
+        font-weight: 400;
+        margin: 30px 0 15px 0;
+      }
+
+      .post-content h3 {
+        font-size: 18px;
+        font-weight: 600;
+        margin: 25px 0 10px 0;
+      }
+
+      .post-content p {
+        margin-bottom: 16px;
+      }
+
+      .post-content ul {
+        margin: 16px 0;
+        padding-left: 20px;
+      }
+
+      .post-content li {
+        margin-bottom: 6px;
+      }
+
+      .post-content strong {
+        font-weight: 600;
+      }
+
+      .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 16px;
+      }
+
+      .comparison-table th,
+      .comparison-table td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .comparison-table th {
+        background-color: #f8f9fa;
+        font-weight: 600;
+      }
+
+      .comparison-table tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      @media (max-width: 768px) {
+        .post-title {
+          font-size: 24px;
+        }
+        
+        .container {
+          padding: 15px;
+        }
+        
+        .comparison-table {
+          font-size: 14px;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+          padding: 8px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="container">
+      <header class="post-header">
+        <a href="../index.html" class="back-link">← Back to Home</a>
+        <h1 class="post-title">LoRaWAN vs NB-IoT</h1>
+        <p class="post-date">August 14, 2025</p>
+      </header>
+
+      <article class="post-content">
+        <p>LoRaWAN and NB-IoT solve the same fundamental problem - connecting low-power devices to the internet - but they take completely different approaches. LoRaWAN operates in unlicensed spectrum with a distributed gateway architecture, while NB-IoT runs on existing cellular infrastructure. Both have significant technical constraints that determine where they actually work.</p>
+        
+        <h2>LoRaWAN</h2>
+        
+        <h3>Chirp Spread Spectrum</h3>
+        <p>LoRa's physical layer uses a unique modulation technique called Chirp Spread Spectrum (CSS). Instead of transmitting data at a fixed frequency, LoRa chirps - sweeps frequency up and down in a specific pattern. This spreading makes signals more resistant to interference from other devices, able to travel longer distances at the same power level, and capable of operating below the noise floor (signals weaker than background noise).</p>
+        
+        <p>The spreading factor trade-off is fundamental. LoRa uses spreading factors from SF7 to SF12, where each increase in SF halves the transmission rate and doubles transmission duration. SF7 provides fast transmission with shorter range and higher data rate, while SF12 offers slow transmission with longer range and lower data rate. We cannot have both speed and range at the same time.</p>
+        
+        <h3>Star-of-Stars Architecture</h3>
+        <p>LoRaWAN networks follow a specific structure:</p>
+        <ul>
+          <li>End devices (sensors) transmit to multiple gateways</li>
+          <li>Gateways forward packets to a network server via the internet</li>
+          <li>The network server manages the network and routes data to applications</li>
+          <li>Application servers process the actual sensor data</li>
+        </ul>
+
+        <p>This architecture provides several advantages:</p>
+        <ul>
+          <li>No single point of failure since if a gateway fails, devices can still reach other gateways</li>
+          <li>Excellent scalability because adding capacity means adding gateways, not replacing infrastructure</li>
+          <li>Ownership flexibility where you can own gateways or use public networks</li>
+        </ul>
+        
+        <h3>Device Classes</h3>
+        <p><strong>Class A (Most common):</strong> Device sleeps most of the time, wakes up, sends data, listens briefly for responses, then goes back to sleep. Power consumption is in microamps when sleeping, but downlink latency can be hours if the device sleeps between transmissions.</p>
+        
+        <p><strong>Class B (Scheduled listening):</strong> Device wakes up at scheduled times to listen for messages, balancing power consumption with responsiveness. Use cases include devices that need regular commands but still prioritize battery life.</p>
+        
+        <p><strong>Class C (Always listening):</strong> Device listens continuously when not transmitting, providing lowest latency for receiving commands but highest power consumption. Not suitable for battery operation - use case is mains-powered devices like gateways or controllers.</p>
+        
+        <h3>The Collision Problem</h3>
+        <p>LoRa networks face a critical problem called inter-SF collision due to the near-far effect. When a device close to the gateway transmits using SF7 (fast, short-range), it can drown out a distant device trying to communicate with SF12 (slow, long-range). This happens because transmission power matters more than spreading factor for interference - a strong nearby signal will overpower a weak distant signal regardless of their different SFs.</p>
+        
+        <p>This creates serious deployment challenges: we can't assume unlimited network capacity just because LoRa offers multiple spreading factors, gateway placement becomes absolutely critical in dense areas, and sophisticated algorithms are needed to intelligently manage which devices use which spreading factors.</p>
+        
+        <h3>Adaptive Data Rate</h3>
+        <p>The network server monitors each device's signal quality and adjusts spreading factor (lower SF for good signal quality resulting in faster transmission) and transmit power (reduce power when signal is strong enough). The goal is to minimize airtime and power consumption.</p>
+        
+        <p>Advanced ADR algorithms distribute devices across spreading factors more intelligently than basic approaches. Standard ADR optimizes individual devices, but advanced algorithms consider network-wide effects.</p>
+        
+        <h3>Security</h3>
+        <p>LoRaWAN uses two separate encryption layers: network layer protects network management and device authentication, while application layer protects actual sensor data from network operators. Each device has unique keys that are derived during the join process, not stored permanently. Network and application providers cannot see each other's data.</p>
+        
+        <p>LoRaWAN's current security relies on AES-128 encryption. The LoRaWAN 1.1 specification significantly enhanced security over version 1.0.x by adding features like a separate Join Server, which further isolates keys and improves the overall security posture. However, the join process can still be exploited through replay attacks if developers don't implement the security protocols correctly.</p>
+        
+        <h3>Capacity and Scalability</h3>
+        <p>In Europe, unlicensed band regulations limit devices to 1% duty cycle - meaning 36 seconds of transmission per hour maximum. Network capacity is fundamentally limited by total available airtime, not the number of devices.</p>
+        
+        <p>The actual number of devices a gateway can support depends heavily on transmission patterns, message sizes, and spreading factor distribution. While simple airtime calculations might suggest lower limits, the statistical nature of transmissions (devices don't all transmit simultaneously) and the use of multiple channels and spreading factors allow gateways to serve much larger device populations in practice.</p>
+
+        <h3>Mobility Limitations</h3>
+        <p>LoRaWAN does not natively support seamless handover between gateways in the same way cellular networks do. This makes it less suitable for tracking assets that are continuously moving across gateway coverage zones, though it works fine for stationary or slowly moving devices.</p>
+
+        <h3>Firmware Updates Over-the-Air (FUOTA)</h3>
+        <p>While possible on LoRaWAN, firmware updates are extremely slow and challenging due to the low data rates and duty cycle limitations. Large firmware updates can take weeks or months to complete across a fleet, making this impractical for time-sensitive security patches.</p>
+        
+        <h2>NB-IoT</h2>
+        
+        <h3>Architecture</h3>
+        <p>NB-IoT (Narrowband IoT) is fundamentally different from LoRaWAN because it's built on cellular infrastructure. It operates within existing LTE frequency bands (licensed spectrum), devices connect directly to cellular base stations with no gateways needed, uses simplified LTE protocols optimized for low-power, low-data IoT applications, and leverages existing cellular infrastructure and coverage.</p>
+        
+        <p>Unlike LoRaWAN's unlicensed bands, NB-IoT operates in spectrum that mobile operators pay licensing fees for. This means no interference from garage door openers, WiFi, or other unlicensed devices; guaranteed quality of service backed by operator SLAs; and professional network management with 24/7 monitoring and maintenance.</p>
+        
+        <p>This comes with significant constraints including higher costs where operators charge licensing fees plus per-device connectivity, operator dependency where you don't own or control the network, and slower deployment requiring operator approval, SIM provisioning, and contracts.</p>
+        
+        <h3>Power Saving Features</h3>
+        <p>NB-IoT achieves long battery life through two key mechanisms:</p>
+        <ul>
+          <li><strong>Power Saving Mode (PSM)</strong> where the device can sleep for hours or days, appearing offline to the network</li>
+          <li><strong>Extended Discontinuous Reception (eDRX)</strong> where the device wakes up periodically to check for messages</li>
+        </ul>
+        <p>Battery life can extend to multiple years under optimal conditions, but real-world performance depends heavily on signal quality (retransmissions drain power), transmission frequency, payload size, and network configuration.</p>
+        
+        <h3>Coverage and Capacity</h3>
+        <p>NB-IoT excels in difficult environments because it can maintain communication even when the signal is extremely weak. NB-IoT signals can penetrate deep into buildings, reach underground areas, and work in locations where other wireless technologies completely fail. Each NB-IoT cell tower can handle tens of thousands of connected devices thanks to optimized cellular protocols.</p>
+
+        <h3>Mobility Support</h3>
+        <p>NB-IoT provides seamless mobility support across cellular networks, making it ideal for tracking moving assets across wide geographic areas. Handover between cell towers is handled automatically by the cellular infrastructure.</p>
+
+        <h3>Firmware Updates Over-the-Air (FUOTA)</h3>
+        <p>NB-IoT's higher bandwidth compared to LoRaWAN makes firmware updates much more practical. While still not as fast as traditional cellular connections, updates can be completed in reasonable timeframes for most applications.</p>
+        
+        <h2>Technology Comparison</h2>
+
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>LoRaWAN</th>
+              <th>NB-IoT</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Spectrum</strong></td>
+              <td>Unlicensed (Sub-GHz)</td>
+              <td>Licensed (Cellular bands)</td>
+            </tr>
+            <tr>
+              <td><strong>Architecture</strong></td>
+              <td>Star-of-stars with gateways</td>
+              <td>Direct to cell towers</td>
+            </tr>
+            <tr>
+              <td><strong>Network Ownership</strong></td>
+              <td>Private or public options</td>
+              <td>Operator-controlled</td>
+            </tr>
+            <tr>
+              <td><strong>Coverage</strong></td>
+              <td>Long range, limited building penetration</td>
+              <td>Excellent building penetration</td>
+            </tr>
+            <tr>
+              <td><strong>Mobility</strong></td>
+              <td>Limited handover support</td>
+              <td>Seamless cellular handover</td>
+            </tr>
+            <tr>
+              <td><strong>Battery Life</strong></td>
+              <td>Up to 10+ years</td>
+              <td>Multiple years (conditions dependent)</td>
+            </tr>
+            <tr>
+              <td><strong>Data Rate</strong></td>
+              <td>Very low (0.3-50 kbps)</td>
+              <td>Low (up to 250 kbps)</td>
+            </tr>
+            <tr>
+              <td><strong>Latency</strong></td>
+              <td>High (seconds to hours)</td>
+              <td>Moderate (seconds)</td>
+            </tr>
+            <tr>
+              <td><strong>Cost Model</strong></td>
+              <td>High upfront, low ongoing</td>
+              <td>Low upfront, recurring monthly</td>
+            </tr>
+            <tr>
+              <td><strong>Deployment Speed</strong></td>
+              <td>Fast (own infrastructure)</td>
+              <td>Slower (operator dependent)</td>
+            </tr>
+            <tr>
+              <td><strong>Security</strong></td>
+              <td>AES-128, dual-layer</td>
+              <td>Cellular-grade encryption</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>When to Choose Each Technology</h2>
+
+        <p><strong>Choose LoRaWAN for:</strong></p>
+        <ul>
+          <li>Large outdoor areas with challenging RF conditions</li>
+          <li>Applications requiring private network control</li>
+          <li>Long-term projects where you want to own the infrastructure</li>
+          <li>Rural locations without reliable cellular coverage</li>
+          <li>Stationary or slowly moving devices</li>
+          <li>Cost-sensitive applications with many devices</li>
+        </ul>
+
+        <p><strong>Choose NB-IoT for:</strong></p>
+        <ul>
+          <li>Urban areas with strong cellular coverage</li>
+          <li>Mission-critical applications requiring guaranteed connectivity</li>
+          <li>Indoor use cases requiring deep building penetration</li>
+          <li>Applications requiring mobility across wide areas</li>
+          <li>Smaller device deployments</li>
+          <li>Projects needing faster deployment without infrastructure investment</li>
+        </ul>
+      </article>
+    </main>
+  </body>
+</html>
