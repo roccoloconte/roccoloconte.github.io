@@ -73,7 +73,7 @@
         <h3>Security</h3>
         <p>LoRaWAN uses two separate encryption layers: network layer protects network management and device authentication, while application layer protects actual sensor data from network operators. Each device has unique keys that are derived during the join process, not stored permanently. Network and application providers cannot see each other's data.</p>
         
-        <p>LoRaWAN's current security relies on AES-128 encryption within a device-based key management system where keys are provisioned directly to devices. The LoRaWAN 1.1 specification significantly enhanced security over version 1.0.x by adding features like a separate Join Server, which further isolates keys and improves the overall security posture. However, the join process can still be exploited through replay attacks if developers don't implement the security protocols correctly.</p>
+        <p>LoRaWAN's current security relies on AES-128 encryption within a device-based key management system where keys are provisioned directly to devices. The LoRaWAN 1.1 specification significantly enhanced security over version 1.0 by adding features like a separate Join Server, which further isolates keys and improves the overall security posture. However, the join process can still be exploited through replay attacks if developers don't implement the security protocols correctly.</p>
         
         <h3>Capacity and Scalability</h3>
         <p>In Europe, unlicensed band regulations limit devices to 1% duty cycle &mdash; meaning 36 seconds of transmission per hour maximum. Network capacity is fundamentally limited by total available airtime, not the number of devices.</p>
