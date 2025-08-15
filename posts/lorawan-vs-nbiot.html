@@ -23,12 +23,12 @@
       </header>
 
       <article class="post-content">
-        <p>LoRaWAN and NB-IoT solve the same fundamental problem - connecting low-power devices to the internet - but they take completely different approaches. LoRaWAN operates in unlicensed spectrum with a distributed gateway architecture, while NB-IoT runs on existing cellular infrastructure. Both have significant technical constraints that determine where they actually work.</p>
+        <p>LoRaWAN and NB-IoT solve the same fundamental problem &mdash; connecting low-power devices to the internet &mdash; but they take completely different approaches. LoRaWAN operates in unlicensed spectrum with a distributed gateway architecture, while NB-IoT runs on existing cellular infrastructure. Both have significant technical constraints that determine where they actually work.</p>
         
         <h2>LoRaWAN</h2>
         
         <h3>Chirp Spread Spectrum</h3>
-        <p>LoRa's physical layer uses a unique modulation technique called Chirp Spread Spectrum (CSS). Instead of transmitting data at a fixed frequency, LoRa chirps - sweeps frequency up and down in a specific pattern. This spreading makes signals more resistant to interference from other devices, able to travel longer distances at the same power level, and capable of operating below the noise floor (signals weaker than background noise).</p>
+        <p>LoRa's physical layer uses a unique modulation technique called Chirp Spread Spectrum (CSS). Instead of transmitting data at a fixed frequency, LoRa chirps &mdash; sweeps frequency up and down in a specific pattern. This spreading makes signals more resistant to interference from other devices, able to travel longer distances at the same power level, and capable of operating below the noise floor (signals weaker than background noise).</p>
         
         <p>The spreading factor trade-off is fundamental. LoRa uses spreading factors from SF7 to SF12, where each increase in SF halves the transmission rate and doubles transmission duration. SF7 provides fast transmission with shorter range and higher data rate, while SF12 offers slow transmission with longer range and lower data rate. We cannot have both speed and range at the same time.</p>
         
@@ -53,10 +53,10 @@
         
         <p><strong>Class B (Scheduled listening):</strong> Device wakes up at scheduled times to listen for messages, balancing power consumption with responsiveness. Use cases include devices that need regular commands but still prioritize battery life.</p>
         
-        <p><strong>Class C (Always listening):</strong> Device listens continuously when not transmitting, providing lowest latency for receiving commands but highest power consumption. Not suitable for battery operation - use case is mains-powered devices like gateways or controllers.</p>
+        <p><strong>Class C (Always listening):</strong> Device listens continuously when not transmitting, providing lowest latency for receiving commands but highest power consumption. Not suitable for battery operation &mdash; use case is mains-powered devices like gateways or controllers.</p>
         
         <h3>The Collision Problem</h3>
-        <p>LoRa networks face a critical problem called inter-SF collision due to the near-far effect. When a device close to the gateway transmits using SF7 (fast, short-range), it can drown out a distant device trying to communicate with SF12 (slow, long-range). This happens because transmission power matters more than spreading factor for interference - a strong nearby signal will overpower a weak distant signal regardless of their different SFs.</p>
+        <p>LoRa networks face a critical problem called inter-SF collision due to the near-far effect. When a device close to the gateway transmits using SF7 (fast, short-range), it can drown out a distant device trying to communicate with SF12 (slow, long-range). This happens because transmission power matters more than spreading factor for interference &mdash; a strong nearby signal will overpower a weak distant signal regardless of their different SFs.</p>
         
         <p>This creates serious deployment challenges:</p>
         <ul>
@@ -76,7 +76,7 @@
         <p>LoRaWAN's current security relies on AES-128 encryption within a device-based key management system where keys are provisioned directly to devices. The LoRaWAN 1.1 specification significantly enhanced security over version 1.0.x by adding features like a separate Join Server, which further isolates keys and improves the overall security posture. However, the join process can still be exploited through replay attacks if developers don't implement the security protocols correctly.</p>
         
         <h3>Capacity and Scalability</h3>
-        <p>In Europe, unlicensed band regulations limit devices to 1% duty cycle - meaning 36 seconds of transmission per hour maximum. Network capacity is fundamentally limited by total available airtime, not the number of devices.</p>
+        <p>In Europe, unlicensed band regulations limit devices to 1% duty cycle &mdash; meaning 36 seconds of transmission per hour maximum. Network capacity is fundamentally limited by total available airtime, not the number of devices.</p>
         
         <p>The actual number of devices a gateway can support depends heavily on transmission patterns, message sizes, and spreading factor distribution. While simple airtime calculations might suggest lower limits, the statistical nature of transmissions (devices don't all transmit simultaneously) and the use of multiple channels and spreading factors allow gateways to serve much larger device populations in practice.</p>
 
@@ -94,7 +94,7 @@
         <h3>Architecture</h3>
         <p>NB-IoT (Narrowband IoT) is fundamentally different from LoRaWAN because it's built on cellular infrastructure. It operates within existing LTE frequency bands (licensed spectrum), devices connect directly to cellular base stations with no gateways needed, uses simplified LTE protocols optimized for low-power, low-data IoT applications, and leverages existing cellular infrastructure and coverage.</p>
         
-        <p>Unlike LoRaWAN's unlicensed bands, NB-IoT operates in spectrum that mobile operators pay licensing fees for. This means no interference from garage door openers, WiFi, or other unlicensed devices; guaranteed quality of service backed by operator SLAs; and professional network management with 24/7 monitoring and maintenance.</p>
+        <p>Unlike LoRaWAN's unlicensed bands, NB-IoT operates in spectrum that mobile operators pay licensing fees for. This means no interference from garage door openers, WiFi, or other unlicensed devices &mdash; guaranteed quality of service backed by operator SLAs; and professional network management with 24/7 monitoring and maintenance.</p>
         
         <p>This comes with significant constraints including higher ongoing costs where operators charge licensing fees plus per-device connectivity (typically $0.50-$2.00 per device per month depending on data usage and volume), operator dependency where you don't own or control the network, and slower deployment requiring operator approval, SIM provisioning, and contracts.</p>
         
@@ -116,7 +116,7 @@
         <p>NB-IoT's higher bandwidth compared to LoRaWAN makes firmware updates much more practical. While still not as fast as traditional cellular connections, updates can be completed in reasonable timeframes for most applications.</p>
 
         <h3>Security</h3>
-        <p>NB-IoT utilizes standardized 3GPP security protocols with SIM-based key management, providing cellular-grade encryption that includes AES-based algorithms. The key difference from LoRaWAN isn't the encryption algorithm itself, but the security architecture - NB-IoT uses established SIM card security with operator-managed authentication systems, while LoRaWAN uses device-based key provisioning.</p>
+        <p>NB-IoT utilizes standardized 3GPP security protocols with SIM-based key management, providing cellular-grade encryption that includes AES-based algorithms. The key difference from LoRaWAN isn't the encryption algorithm itself, but the security architecture &mdash; NB-IoT uses established SIM card security with operator-managed authentication systems, while LoRaWAN uses device-based key provisioning.</p>
 
         <h3>Network Availability Limitations</h3>
         <p>NB-IoT deployment depends on cellular operator rollout, which is not yet globally ubiquitous. While coverage is expanding rapidly in urban areas and developed markets, rural or developing regions may lack NB-IoT availability. However, where available, NB-IoT benefits from existing cellular roaming agreements for international deployments.</p>
