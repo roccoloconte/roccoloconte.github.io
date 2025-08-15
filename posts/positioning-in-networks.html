@@ -26,8 +26,8 @@
 
             <h2>GPS Positioning</h2>
             <p>GPS relies on a constellation of satellites orbiting Earth. The system works through a process called multilateration, where the device measures the time it takes for signals to travel from at least four satellites. Since radio waves travel at the speed of light, these time measurements can be converted directly into distances.</p>
-            <p>Each distance measurement creates an imaginary sphere around that satellite, and the device's position is located where these spheres intersect. The fourth satellite serves a critical purpose beyond positioning &mdash; it corrects for clock errors in your device. While satellites carry atomic clocks accurate to nanoseconds, your phone or GPS receiver uses much less precise timing.</p>
-            <p>The satellites continuously broadcast their precise orbital positions along with timestamps. The device performs the calculation and once distances to multiple satellites are known, basic geometry determines your location through the intersection of these spherical measurements.</p>
+            <p>Each distance measurement creates an imaginary sphere around that satellite, and the device's position is located where these spheres intersect. The fourth satellite serves a critical purpose beyond positioning &mdash; it corrects for clock errors in the device. While satellites carry atomic clocks accurate to nanoseconds, the phone or GPS receiver uses much less precise timing.</p>
+            <p>The satellites continuously broadcast their precise orbital positions along with timestamps. The device performs the calculation and once distances to multiple satellites are known, basic geometry determines the location through the intersection of these spherical measurements.</p>
 
             <h2>Why Network-Based Positioning Matters</h2>
             <h3><strong>The GPS Problem</strong></h3>
@@ -91,7 +91,7 @@
                 <li>Museum and exhibition guidance systems</li>
                 <li>Industrial equipment monitoring in confined spaces</li>
             </ul>
-            <p>The technology provides room-level or sub-room accuracy, making it ideal for applications where you need to know not just which building, but which specific area within that building.</p>
+            <p>The technology provides room-level or sub-room accuracy, making it ideal for applications where it's necessary to know not just which building, but which specific area within that building.</p>
 
             <h2>Ultra-Wideband (UWB) Positioning</h2>
             <p>Ultra-Wideband represents the gold standard for high-precision indoor positioning, offering centimeter-level accuracy with low latency.</p>
@@ -127,11 +127,11 @@
                 <li>Environmental obstacles</li>
                 <li>Clock synchronization quality</li>
             </ul>
-            <p><strong>RSSI-Based Positioning:</strong> When TDoA isn't available, systems fall back to signal strength measurements:</p>
+            <p>When TDoA isn't available, systems fall back to Received Signal Strength Indicator (RSSI) measurements:</p>
             <ul>
-                <li>Stronger signals generally mean shorter distances</li>
-                <li>Less accurate but works with fewer gateways</li>
-                <li>Machine learning approaches are increasingly being explored to improve accuracy. These models can learn complex signal behaviors in a specific environment, compensating for signal reflections and obstructions to produce a more accurate position estimate than is possible with simple geometric formulas.</li>
+                <li>RSSI estimates distance based on signal strength - stronger signals generally mean shorter distances</li>
+                <li>Less accurate than TDoA but works with fewer gateways</li>
+                <li>Provides a fallback positioning method when precise timing synchronization isn't achievabe</li>
             </ul>
 
             <h3><strong>NB-IoT Positioning</strong></h3>
@@ -149,7 +149,7 @@
                 <li>Weather affects signal propagation</li>
                 <li>Interference from other devices creates noise</li>
             </ul>
-            <p>Machine learning approaches are being explored to improve positioning accuracy by learning patterns in signal behavior for specific environments. These models analyze historical signal data to understand how environmental factors affect signal propagation, enabling more accurate position estimates than traditional geometric methods alone.</p>
+            <p>These environmental factors make NB-IoT positioning challenging, typically providing city-block level accuracy rather than precise positioning.</p>
 
             <h2>Comparisons</h2>
             <table class="comparison-table">
@@ -208,7 +208,7 @@
             </table>
 
             <h2>Conclusion</h2>
-            <p>The landscape of positioning technologies demonstrates that there is no universal solution. The optimal choice depends entirely on your application's specific requirements for accuracy, power consumption, cost, and operating environment.</p>
+            <p>The landscape of positioning technologies demonstrates that there is no universal solution. The optimal choice depends entirely on the application's specific requirements for accuracy, power consumption, cost, and operating environment.</p>
             <p>GPS remains dominant for outdoor navigation, while 5G promises high-precision tracking for premium applications. Wi-Fi and BLE leverage existing infrastructure for cost-effective indoor positioning, and UWB delivers unmatched precision where accuracy justifies the cost. For IoT deployments requiring years of battery life, LPWAN technologies like LoRaWAN and NB-IoT provide essential positioning capabilities despite their accuracy trade-offs.</p>
             <p>As machine learning techniques mature, we can expect significant improvements in positioning accuracy across all these technologies, particularly for challenging indoor and urban environments where signal propagation is complex and unpredictable.</p>
         </article>

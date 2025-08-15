@@ -22,16 +22,16 @@
             <p class="post-date">August 14, 2025</p>
         </header>
         <article class="post-content">
-            <p>Understanding how voice travels through modern networks and AI systems reveals the sophisticated engineering behind seemingly simple conversations. From the moment you speak into a device to when someone else hears your voice, multiple layers of technology work together to preserve, compress, transmit, and recreate human speech with remarkable fidelity.</p>
-
+            <p>Understanding how voice travels through modern networks and AI systems reveals the sophisticated engineering behind seemingly simple conversations. From the moment someone speaks into a device to when someone else hears their voice, multiple layers of technology work together to preserve, compress, transmit, and recreate human speech with remarkable fidelity.</p>
+            
             <h2>5G Networks</h2>
 
             <h3><strong>How Voice Gets Captured</strong></h3>
-            <p>When you speak into a 5G device, your voice undergoes a precise transformation process. The analog audio signal first passes through an analog-to-digital converter, which uses pulse-code modulation (PCM) to sample your voice at specific intervals &mdash; typically 8,000 to 48,000 times per second depending on the quality requirements.</p>
-
+            <p>When someone speaks into a 5G device, the voice undergoes a precise transformation process. The analog audio signal first passes through an analog-to-digital converter, which uses pulse-code modulation (PCM) to sample the voice at specific intervals &mdash; typically 8,000 to 48,000 times per second depending on the quality requirements.</p>
+            
             <h3><strong>Pulse-Code Modulation (PCM)</strong></h3>
-            <p>PCM works by taking snapshots of your voice wave at regular intervals, like photographing a moving object multiple times per second. Each snapshot measures the exact amplitude (loudness) of the sound wave at that precise moment. The converter then assigns a binary number to each amplitude measurement &mdash; for example, a 16-bit system can represent 65,536 different amplitude levels. This creates a stream of digital numbers that, when played back in sequence, recreates your original voice waveform. The sampling rate determines audio quality, the higher the better.</p>
-
+            <p>PCM works by taking snapshots of the voice wave at regular intervals, like photographing a moving object multiple times per second. Each snapshot measures the exact amplitude (loudness) of the sound wave at that precise moment. The converter then assigns a binary number to each amplitude measurement &mdash; for example, a 16-bit system can represent 65,536 different amplitude levels. This creates a stream of digital numbers that, when played back in sequence, recreates the original voice waveform. The sampling rate determines audio quality, the higher the better.</p>
+            
             <p>Modern 5G systems can sample at much higher rates than older networks, capturing more nuanced audio details including subtle emotional inflections and speaker characteristics that traditional telephony loses.</p>
 
             <h3><strong>How Voice Gets Encoded</strong></h3>
@@ -40,7 +40,7 @@
             <h3><strong>Audio Compression</strong></h3>
             <p>Audio compression works by exploiting limitations in human hearing. The Enhanced Voice Services (EVS) codec, specifically designed for 5G, identify which audio frequencies humans can't perceive and removes them. For example, if a loud sound occurs at 1000 Hz, our ears become temporarily less sensitive to quieter sounds at nearby frequencies &mdash; the codec eliminates this masked audio data.</p>
 
-            <p>EVS dynamically analyzes your speech content in real-time, switching between different compression strategies. During silence or simple vowel sounds, it applies aggressive compression. When we speak complex consonants or multiple speakers talk simultaneously, it preserves more audio detail. This adaptive approach allows EVS to range from a few kbps for basic voice quality up to much higher kbps for near-studio quality audio.</p>
+            <p>EVS dynamically analyzes speech content in real-time, switching between different compression strategies. During silence or simple vowel sounds, it applies aggressive compression. When we speak complex consonants or multiple speakers talk simultaneously, it preserves more audio detail.</p>
 
             <p>Opus (not the Anthropic model), another key codec in 5G networks, excels at real-time applications like gaming or video calls. It can adapt its compression rate 50 times per second, responding almost instantly to changes in the voice or network conditions. This responsiveness explains why modern gaming voice chat feels so natural compared to older systems.</p>
 
@@ -50,9 +50,9 @@
             <p>Before transmission, voice packets undergo encryption to protect against interception and eavesdropping. 5G networks implement multiple layers of security, including user plane encryption that scrambles voice data using algorithms like 256-bit AES. The Secure Real-time Transport Protocol (SRTP) adds another layer of protection specifically for voice communications, ensuring both confidentiality and integrity of the audio stream. This encryption happens transparently &mdash; users experience no delay or quality degradation, but their conversations remain protected from unauthorized access throughout the network journey.</p>
 
             <h3><strong>How Voice Travels</strong></h3>
-            <p>Voice packets travel through 5G networks using Voice over New Radio (VoNR), a packet-based system that abandons the circuit-switched approach of older cellular networks. This represents the final evolution from circuit-switched networks in 2G and 3G systems, through Voice over LTE (VoLTE) in 4G networks, to the fully packet-switched VoNR approach in 5G. Instead of reserving a dedicated channel for your entire call, VoNR treats voice as high-priority data packets flowing through the same infrastructure handling internet traffic.</p>
+            <p>Voice packets travel through 5G networks using Voice over New Radio (VoNR), a packet-based system that abandons the circuit-switched approach of older cellular networks. This represents the final evolution from circuit-switched networks in 2G and 3G systems, through Voice over LTE (VoLTE) in 4G networks, to the fully packet-switched VoNR approach in 5G. Instead of reserving a dedicated channel for the entire call, VoNR treats voice as high-priority data packets flowing through the same infrastructure handling internet traffic.</p>
 
-            <p>Quality of Service (QoS) mechanisms ensure voice packets get priority treatment. When network congestion occurs, your voice data jumps ahead of web browsing or file downloads. 5G networks can create dedicated network slices &mdash; virtual networks optimized specifically for voice applications with guaranteed latency and bandwidth parameters.</p>
+            <p>Quality of Service (QoS) mechanisms ensure voice packets get priority treatment. When network congestion occurs, voice data jumps ahead of web browsing or file downloads.</p>
 
             <p>The packets don't necessarily follow the same path to their destination. Network intelligence routes each packet through the least congested route available, potentially sending consecutive voice packets through different cell towers. This dynamic routing helps maintain call quality even when parts of the network experience problems.</p>
 
